@@ -34,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         int price = calculatePrice();
-        String orderSummary = createOrderSummary(price);
-        displayPriceSummary(orderSummary);
+        displayPriceSummary(createOrderSummary(price));
     }
 
     /**
@@ -83,12 +82,14 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Create Order Summary from calculatePrice() method
-     * @param price
-     * @return
+     * @param price of the total order
+     * @return text summary
      */
     private String createOrderSummary(int price) {
-        String clientName = "Kaptain Kunal";
-        String orderSummary = "Name: " + clientName + "\nQuantity: " + quantity + "\nTotal: $" + price + "\nThank you!";
+        String orderSummary = "Name: Kaptain Kunal";
+        orderSummary = orderSummary + "\nQuantity: " + quantity;
+        orderSummary = orderSummary + "\nTotal: $" + price;
+        orderSummary = orderSummary + "\nThank you!";
         return orderSummary;
     }
 
