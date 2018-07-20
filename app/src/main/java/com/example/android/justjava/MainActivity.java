@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         int price = calculatePrice();
-        displayPriceSummary(createOrderSummary(price));
+        displayMessage(createOrderSummary(price));
     }
 
     /**
@@ -67,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the given price on the screen.
      */
-    private void displayPriceSummary(String orderSummary) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(orderSummary);
+    private void displayMessage(String orderSummary) {
+        TextView orderSummaryTextView = (TextView) findViewById(R.id.orderSummary_text_view);
+        orderSummaryTextView.setText(orderSummary);
     }
 
     /**
