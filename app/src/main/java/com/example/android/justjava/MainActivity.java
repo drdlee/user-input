@@ -87,9 +87,9 @@ public class MainActivity extends AppCompatActivity {
      */
     private String createOrderSummary(int price) {
         String orderSummary = "Name: Kaptain Kunal";
-        orderSummary = orderSummary + "\nQuantity: " + quantity;
-        orderSummary = orderSummary + "\nTotal: $" + price;
-        orderSummary = orderSummary + "\nThank you!";
+        orderSummary += "\nQuantity: " + quantity;
+        orderSummary += "\nTotal: $" + price;
+        orderSummary += "\nThank you!";
         return orderSummary;
     }
 
