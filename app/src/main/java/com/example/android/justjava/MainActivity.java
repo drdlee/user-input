@@ -1,5 +1,5 @@
 /**
- * IMPORTANT: Make sure you are using the correct package name. 
+ * IMPORTANT: Make sure you are using the correct package name.
  * This example uses the package name:
  * package com.example.android.justjava
  * If you get an error when copying this code into Android studio, update it to match teh package name found
@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         int price = calculatePrice();
-        displayPrice(price);
+        String orderSummary = createOrderSummary(price);
+        displayPriceSummary(orderSummary);
     }
 
     /**
@@ -67,9 +68,9 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the given price on the screen.
      */
-    private void displayPrice(int number) {
+    private void displayPriceSummary(String orderSummary) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+        priceTextView.setText(orderSummary);
     }
 
     /**
@@ -78,6 +79,17 @@ public class MainActivity extends AppCompatActivity {
      */
     private int calculatePrice() {
         return quantity * 5;
+    }
+
+    /**
+     * Create Order Summary from calculatePrice() method
+     * @param price
+     * @return
+     */
+    private String createOrderSummary(int price) {
+        String clientName = "Kaptain Kunal";
+        String orderSummary = "Name: " + clientName + "\nQuantity: " + quantity + "\nTotal: $" + price + "\nThank you!";
+        return orderSummary;
     }
 
 }
