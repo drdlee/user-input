@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.text.NumberFormat;
 
 /**
@@ -23,13 +25,14 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends AppCompatActivity {
     int quantity = 2;
-
+    Toast toastMessage;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        toastMessage = Toast.makeText(this, "welcome", Toast.LENGTH_SHORT);
     }
 
     /**
@@ -51,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
      *  this method is called when the "+" button is clicked
      */
     public void increment(View view) {
+        if (quantity == 100) {
+            toastMessage.setText("order max 100 cups");
+            toastMessage.show();
+            return;
+        }
         quantity = quantity + 1;
         display(quantity);
     }
@@ -59,10 +67,12 @@ public class MainActivity extends AppCompatActivity {
      * this method is called when the"-" button is pressed
      */
     public void decrement(View view) {
-        quantity = quantity - 1;
-        if (quantity == 0) {
-            display(quantity = 1);
+        if (quantity == 1) {
+            toastMessage.setText("min order 1 cup");
+            toastMessage.show();
+            return;
         }
+        quantity = quantity - 1;
         display(quantity);
     }
 
