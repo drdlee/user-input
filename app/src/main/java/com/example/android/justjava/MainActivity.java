@@ -36,9 +36,11 @@ public class MainActivity extends AppCompatActivity {
     public void submitOrder(View view) {
         CheckBox whippedCreamState = findViewById(R.id.toppings_whippedCream);
         boolean withWhippedCream = whippedCreamState.isChecked();
+        CheckBox chocolateState = findViewById(R.id.toppings_chocolate);
+        boolean withChocolate = chocolateState.isChecked();
 
         int price = calculatePrice();
-        displayMessage(createOrderSummary(price, withWhippedCream));
+        displayMessage(createOrderSummary(price, withWhippedCream, withChocolate));
     }
 
     /**
@@ -87,14 +89,14 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Create Order Summary from calculatePrice() method
      * @param price of the total order
-     * @param withWhippedCream is whether the user wants to add whipped cream or not
+     * @param withWhippedCream is whether the user wants to add whipped cream toppings or not
+     * @param withChocolate is whether the user wants to add chocolate toppings or not
      * @return text summary
      */
-    private String createOrderSummary(int price, boolean withWhippedCream) {
+    private String createOrderSummary(int price, boolean withWhippedCream, boolean withChocolate) {
         String orderSummary = "Name: Kaptain Kunal";
-        if (withWhippedCream) {
-            orderSummary += "\nAdd Whiped Cream? " + withWhippedCream;
-        }
+        if (withWhippedCream) orderSummary += "\nAdd Whiped Cream? " + withWhippedCream;
+        if (withChocolate) orderSummary += "\nAdd Chocolate? " + withChocolate;
         orderSummary += "\nQuantity: " + quantity;
         orderSummary += "\nTotal: $" + price;
         orderSummary += "\nThank you!";
