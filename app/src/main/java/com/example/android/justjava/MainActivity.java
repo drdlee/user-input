@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 import java.text.NumberFormat;
 
@@ -22,6 +23,7 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends AppCompatActivity {
     int quantity = 2;
+
 
 
     @Override
@@ -38,9 +40,11 @@ public class MainActivity extends AppCompatActivity {
         boolean withWhippedCream = whippedCreamState.isChecked();
         CheckBox chocolateState = findViewById(R.id.toppings_chocolate);
         boolean withChocolate = chocolateState.isChecked();
+        EditText userNameText = findViewById(R.id.name_field);
+        String userName = userNameText.getText().toString();
 
         int price = calculatePrice();
-        displayMessage(createOrderSummary(price, withWhippedCream, withChocolate));
+        displayMessage(createOrderSummary(userName, price, withWhippedCream, withChocolate));
     }
 
     /**
@@ -93,9 +97,9 @@ public class MainActivity extends AppCompatActivity {
      * @param withChocolate is whether the user wants to add chocolate toppings or not
      * @return text summary
      */
-    private String createOrderSummary(int price, boolean withWhippedCream, boolean withChocolate) {
-        String orderSummary = "Name: Kaptain Kunal";
-        if (withWhippedCream) orderSummary += "\nAdd Whiped Cream? " + withWhippedCream;
+    private String createOrderSummary(String userName, int price, boolean withWhippedCream, boolean withChocolate) {
+        String orderSummary = "Name: " + userName;
+        if (withWhippedCream) orderSummary += "\nAdd Whipped Cream? " + withWhippedCream;
         if (withChocolate) orderSummary += "\nAdd Chocolate? " + withChocolate;
         orderSummary += "\nQuantity: " + quantity;
         orderSummary += "\nTotal: $" + price;
