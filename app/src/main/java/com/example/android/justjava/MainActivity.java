@@ -13,6 +13,7 @@ package com.example.android.justjava;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import java.text.NumberFormat;
 
@@ -33,8 +34,11 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+        CheckBox whippedCreamState = findViewById(R.id.toppings_whippedCream);
+        boolean withWhippedCream = whippedCreamState.isChecked();
+
         int price = calculatePrice();
-        displayMessage(createOrderSummary(price));
+        displayMessage(createOrderSummary(price, withWhippedCream));
     }
 
     /**
@@ -60,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
      * This method displays the given quantity value on the screen.
      */
     private void display(int number) {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+        TextView quantityTextView = findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
 
@@ -68,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
      * This method displays the given price on the screen.
      */
     private void displayMessage(String orderSummary) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.orderSummary_text_view);
+        TextView orderSummaryTextView = findViewById(R.id.orderSummary_text_view);
         orderSummaryTextView.setText(orderSummary);
     }
 
@@ -83,10 +87,14 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Create Order Summary from calculatePrice() method
      * @param price of the total order
+     * @param withWhippedCream is whether the user wants to add whipped cream or not
      * @return text summary
      */
-    private String createOrderSummary(int price) {
+    private String createOrderSummary(int price, boolean withWhippedCream) {
         String orderSummary = "Name: Kaptain Kunal";
+        if (withWhippedCream) {
+            orderSummary += "\nAdd Whiped Cream? " + withWhippedCream;
+        }
         orderSummary += "\nQuantity: " + quantity;
         orderSummary += "\nTotal: $" + price;
         orderSummary += "\nThank you!";
