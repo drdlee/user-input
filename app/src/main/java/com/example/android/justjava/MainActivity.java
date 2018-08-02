@@ -10,6 +10,8 @@ package com.example.android.justjava;
 
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -47,7 +49,15 @@ public class MainActivity extends AppCompatActivity {
         String userName = userNameText.getText().toString();
 
         int price = calculatePrice(withWhippedCream, withChocolate);
-        displayMessage(createOrderSummary(userName, price, withWhippedCream, withChocolate));
+        String OrderSummary = createOrderSummary(userName, price, withWhippedCream, withChocolate);
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java Order summary");
+        intent.putExtra(Intent.EXTRA_TEXT, OrderSummary);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     /**
@@ -82,14 +92,6 @@ public class MainActivity extends AppCompatActivity {
     private void display(int number) {
         TextView quantityTextView = findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
-    }
-
-    /**
-     * This method displays the given price on the screen.
-     */
-    private void displayMessage(String orderSummary) {
-        TextView orderSummaryTextView = findViewById(R.id.orderSummary_text_view);
-        orderSummaryTextView.setText(orderSummary);
     }
 
     /**
