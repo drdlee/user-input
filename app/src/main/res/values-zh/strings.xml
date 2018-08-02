@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">只是Java</string>
+    <string name="toppings">配料</string>
+    <string name="thank_you">谢谢</string>
+    <string name="order_summary_name">姓名: <xliff:g id="name" example="Santoso">%s</xliff:g></string>
+    <string name="name">您的姓名</string>
+    <string name="whipped_cream">奶油</string>
+    <string name="chocolate">巧克力</string>
+    <string name="quantity_header">数量</string>
+    <string name="order">订购</string>
+    <string name="add">加</string>
+    <string name="total_price">总价: $<xliff:g id="price" example="10.00">%d</xliff:g></string>
+</resources>

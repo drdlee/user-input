@@ -1,3 +1,29 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!--Title for the application-->
     <string name="app_name">Just Java</string>
+
+    <!--Hint text display in the empty field for the user's name-->
+    <string name="name">Your Name</string>
+
+    <!--Header text for the list of toppings [CHAR LIMIT=20]-->
+    <string name="toppings">Toppings</string>
+    <string name="add">Add</string>
+    <string name="whipped_cream">Whipped Cream</string>
+    <string name="chocolate">Chocolate</string>
+
+    <!--Header text for Quantity-->
+    <string name="quantity_header">Quantity</string>
+    <string name="quantity_value" translatable="false">2</string>
+    <string name="total_price">Total: $<xliff:g id="price" example="10.00">%d</xliff:g></string>
+    <string name="increment_symbol" translatable="false">+</string>
+    <string name="decrement_symbol" translatable="false">-</string>
+
+    <!--Button text for Order-->
+    <string name="order">Order</string>
+
+    <!--Thank you message for the order summary [CHAR LIMIT=NONE]-->
+    <string name="thank_you">Thank you!</string>
+
+    <!--Name for the order Summary. It will be shown in format of "Name: Santoso" where Santoso is the user's name. [CHAR LIMIT=NONE]-->
+    <string name="order_summary_name">Name: <xliff:g id="name" example="Santoso">%s</xliff:g></string>
 </resources>
